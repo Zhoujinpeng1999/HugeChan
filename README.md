@@ -1,2 +1,5 @@
 # HugeChan
 HugeChan
+
+## Struct
+
