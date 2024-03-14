@@ -1,4 +1,4 @@
-from ..utils.type_check import CheckValueTypeWithList
+from utils.type_check import CheckValueTypeWithList
 from enum import Enum
 
 class Level(Enum):

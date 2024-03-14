@@ -1,0 +1,323 @@
+{
+    "mode": 0,
+    "services": [
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200001,
+            "sid": 100001
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200001,
+            "sid": 100002
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200001,
+            "sid": 100003
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200001,
+            "sid": 100004
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200001,
+            "sid": 100005
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200001,
+            "sid": 100006
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200001,
+            "sid": 100007
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200001,
+            "sid": 100008
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200001,
+            "sid": 100009
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200001,
+            "sid": 100010
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200002,
+            "sid": 100011
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200002,
+            "sid": 100012
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200002,
+            "sid": 100013
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200002,
+            "sid": 100014
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200002,
+            "sid": 100015
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200002,
+            "sid": 100016
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200002,
+            "sid": 100017
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200002,
+            "sid": 100018
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200002,
+            "sid": 100019
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200002,
+            "sid": 100020
+        },
+        {
+            "continent": "asia",
+            "idc": "shanghai",
+            "machine": 200003,
+            "sid": 100021
+        },
+        {
+            "continent": "asia",
+            "idc": "wuxi",
+            "machine": 200004,
+            "sid": 100022
+        },
+        {
+            "continent": "asia",
+            "idc": "wuxi",
+            "machine": 200004,
+            "sid": 100023
+        },
+        {
+            "continent": "asia",
+            "idc": "wuxi",
+            "machine": 200004,
+            "sid": 100024
+        },
+        {
+            "continent": "asia",
+            "idc": "wuxi",
+            "machine": 200004,
+            "sid": 100025
+        },
+        {
+            "continent": "asia",
+            "idc": "wuxi",
+            "machine": 200004,
+            "sid": 100026
+        },
+        {
+            "continent": "asia",
+            "idc": "wuxi",
+            "machine": 200004,
+            "sid": 100027
+        },
+        {
+            "continent": "asia",
+            "idc": "wuxi",
+            "machine": 200004,
+            "sid": 100028
+        },
+        {
+            "continent": "asia",
+            "idc": "wuxi",
+            "machine": 200004,
+            "sid": 100029
+        },
+        {
+            "continent": "asia",
+            "idc": "wuxi",
+            "machine": 200004,
+            "sid": 100030
+        },
+        {
+            "continent": "asia",
+            "idc": "wuxi",
+            "machine": 200004,
+            "sid": 100031
+        },
+        {
+            "continent": "asia",
+            "idc": "beijing",
+            "machine": 200005,
+            "sid": 100032
+        },
+        {
+            "continent": "europe",
+            "idc": "frankfurt",
+            "machine": 200006,
+            "sid": 100033
+        },
+        {
+            "continent": "europe",
+            "idc": "frankfurt",
+            "machine": 200006,
+            "sid": 100034
+        },
+        {
+            "continent": "europe",
+            "idc": "frankfurt",
+            "machine": 200006,
+            "sid": 100035
+        },
+        {
+            "continent": "europe",
+            "idc": "frankfurt",
+            "machine": 200006,
+            "sid": 100036
+        },
+        {
+            "continent": "europe",
+            "idc": "frankfurt",
+            "machine": 200006,
+            "sid": 100037
+        },
+        {
+            "continent": "europe",
+            "idc": "frankfurt",
+            "machine": 200007,
+            "sid": 100038
+        },
+        {
+            "continent": "europe",
+            "idc": "frankfurt",
+            "machine": 200007,
+            "sid": 100039
+        },
+        {
+            "continent": "europe",
+            "idc": "frankfurt",
+            "machine": 200007,
+            "sid": 100040
+        },
+        {
+            "continent": "europe",
+            "idc": "frankfurt",
+            "machine": 200007,
+            "sid": 100041
+        },
+        {
+            "continent": "europe",
+            "idc": "frankfurt",
+            "machine": 200007,
+            "sid": 100042
+        },
+        {
+            "continent": "america",
+            "idc": "newyork",
+            "machine": 200008,
+            "sid": 100043
+        },
+        {
+            "continent": "america",
+            "idc": "newyork",
+            "machine": 200008,
+            "sid": 100044
+        },
+        {
+            "continent": "america",
+            "idc": "newyork",
+            "machine": 200008,
+            "sid": 100045
+        },
+        {
+            "continent": "america",
+            "idc": "newyork",
+            "machine": 200008,
+            "sid": 100046
+        },
+        {
+            "continent": "america",
+            "idc": "newyork",
+            "machine": 200008,
+            "sid": 100047
+        },
+        {
+            "continent": "america",
+            "idc": "newyork",
+            "machine": 200009,
+            "sid": 100048
+        },
+        {
+            "continent": "america",
+            "idc": "newyork",
+            "machine": 200009,
+            "sid": 100049
+        },
+        {
+            "continent": "america",
+            "idc": "newyork",
+            "machine": 200009,
+            "sid": 100050
+        },
+        {
+            "continent": "america",
+            "idc": "newyork",
+            "machine": 200009,
+            "sid": 100051
+        },
+        {
+            "continent": "america",
+            "idc": "newyork",
+            "machine": 200009,
+            "sid": 100052
+        }
+    ],
+    "speaker": {
+        "uid": 1234567,
+        "cname": "qaq",
+        "cid": 716404,
+        "sid": 100001
+    }
+}

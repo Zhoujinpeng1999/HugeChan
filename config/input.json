@@ -1,0 +1,21 @@
+{
+    "mode":0,
+    "servers":[
+        {
+            "continent":"Asia",
+            "idc":"jinan",
+            "machine":200001,
+            "sid":100001
+        },
+        {
+            "continent": "Asia",
+            "idc": "jinan",
+            "machine": 200002,
+            "sid": 100002
+        }
+    ],
+    "speaker":{
+        "uid":12345,
+        "sid":"100002"
+    }
+}
