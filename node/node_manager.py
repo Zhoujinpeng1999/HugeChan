@@ -25,6 +25,9 @@ class NodeManager:
         for node in self.nodes.values():
             node.AddChannel(cid, channel_name)
 
+    def HashNodeWithRole(self, node_info):
+        return "{}_{}".format(node_info[0], node_info[1])
+
     def CreateSpeaker(self, sid: int, cid: int, speaker_uid: int):
         # 画图
         vis = {}  # node_id + role -> bool
@@ -34,14 +37,18 @@ class NodeManager:
         for node in init_nodes:  # node format: [sid, role]
             queue.put(node)
             logger.debug("find edge from:{}, to:{}, level:{}".format(sid, node[0], node[1]))
-            vis[node] = True
+            vis[self.HashNodeWithRole(node)] = True
         while not queue.empty():
             now_node, now_role = queue.get()  # sid , role
-            for node in self.nodes[now_node].GetDownsideStreamNodes(cid, speaker_uid, now_role):
-                if vis[node] == True:
+            next_node_list = self.nodes[now_node].GetDownsideStreamNodes(cid, speaker_uid, now_role)
+            logger.debug("now:{}_{} next:{}".format(
+                now_node, now_role, next_node_list
+            ))
+            for node in next_node_list:
+                if self.HashNodeWithRole(node) in vis.keys():
                     continue
-                logger.debug("find edge from:{}, to:{}, level:{}".format(sid, node[0], node[1]))
+                logger.debug("find edge from:{}, to:{}, level:{}".format(now_node, node[0], node[1]))
                 queue.put(node)
-                vis[node] = True
+                vis[self.HashNodeWithRole(node)] = True
 
     

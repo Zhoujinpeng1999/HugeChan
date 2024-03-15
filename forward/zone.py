@@ -15,11 +15,10 @@ class Zone:
     def __init__(self, level:int, father, name:str):
         CheckValueTypeWithList([
             [level, int],
-            [name, str]
         ])
         self.level = level
         self.father = father
-        self.name = name
+        self.name = name  # maybe str or int
         self.enabled_services = {}  # xor result to sid
         self.disable_services = {}  # xor result to sid
         self.children = {}  # zone_key -> Zone

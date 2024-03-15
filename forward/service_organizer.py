@@ -38,7 +38,7 @@ class Organizer:
         # 先在services里新增
         xor_now_edge_sid = now_edge.service_id ^ self._rnd
         self.services[xor_now_edge_sid] = now_edge
-        now_zone:Zone = self.root_zone
+        now_zone: Zone = self.root_zone
         for i in range(Level.kWorld.value, Level.kZoneMax.value-1):
             # 找到下一个Zone
             next_level = i+1
@@ -55,7 +55,7 @@ class Organizer:
                     now_zone.super_nodes[xor_now_edge_sid] = now_edge.machine_id
                     self.AddSuperNode(now_edge, next_level)
                 # 如果满了考虑取xor值最小的
-                now_keys = now_zone.super_nodes.keys()
+                now_keys = list(now_zone.super_nodes.keys())
                 self.LOCAL_LOG_DEBUG("keys:{}, sid:{}, xor_sid:{}".format(now_keys, now_edge.service_id, xor_now_edge_sid))
                 if xor_now_edge_sid < now_keys[-1]:
                     self.RemoveSuperNode(self.services[now_keys[-1]], next_level)
@@ -67,7 +67,7 @@ class Organizer:
 
 
     def AddSuperNode(self, edge_info: EdgeServiceInfo, level: int):
-        reverse_idx = Level.kZoneMax - level  # 自己上一级在EdgeServiceRole中的位置
+        reverse_idx = Level.kZoneMax.value - level  # 自己上一级在EdgeServiceRole中的位置
         self_role = reverse_idx - 1  # 计算自己在EdgeServiceRole中的位置
         temp_xor_service_id = edge_info.service_id ^ self._rnd
         # 检查当前service是否存在
@@ -77,15 +77,15 @@ class Organizer:
             ))
             return
         # 更新super node, 从它父亲级别开始, 因为它父亲级别下发的时候需要下发到他
-        for i in range(reverse_idx, EdgeServiceRole.kRoleMax):
+        for i in range(reverse_idx, EdgeServiceRole.kRoleMax.value):
             temp_service_with_role = EdgeServiceWithRole(edge_info, EdgeServiceRole(self_role))
             self.super_nodes[i][temp_xor_service_id] = temp_service_with_role
 
     def RemoveSuperNode(self, edge_info: EdgeServiceInfo, level: int):
-        reverse_idx = Level.kZoneMax - level  # 自己上一级在EdgeServiceRole中的位置
+        reverse_idx = Level.kZoneMax.value - level  # 自己上一级在EdgeServiceRole中的位置
         temp_xor_service_id = edge_info.service_id ^ self._rnd
         # 在父以上super node中删除
-        for i in range(reverse_idx, EdgeServiceRole.kRoleMax):
+        for i in range(reverse_idx, EdgeServiceRole.kRoleMax.value):
             self.super_nodes[i].pop(temp_xor_service_id)
 
     def RemoveService(self, edge_info: EdgeServiceInfo):
@@ -97,6 +97,6 @@ class Organizer:
 
     def GetDownsideStreamNodes(self, uid: int, role: EdgeServiceRole):
         ll = []
-        for item in self.super_nodes[role.value]:
+        for item in self.super_nodes[role.value].values():
             ll.append([item.edge_service_info.service_id, item.role])
         return ll
