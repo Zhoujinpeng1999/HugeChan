@@ -100,5 +100,5 @@ class Organizer:
     def GetDownsideStreamNodes(self, uid: int, role: EdgeServiceRole):
         ll = []
         for item in self.super_nodes[role.value].values():
-            ll.append([item.edge_service_info.service_id, item.role])
+            ll.append([item.edge_service_info.service_id, item.role, item.edge_service_info.GetZoneKeyWithLevel(4-item.role.value)])
         return ll

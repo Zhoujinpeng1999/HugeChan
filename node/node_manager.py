@@ -29,6 +29,9 @@ class NodeManager:
     def HashNodeWithRole(self, node_info):
         return "{}_{}".format(node_info[0], node_info[1])
 
+    def BuildNodeStr(self, sid, key, level):
+        return "{}_{}_{}".format(str(sid), key, level)
+
     def CreateSpeaker(self, sid: int, cid: int, speaker_uid: int):
         # 画图
         pt = Painter()
@@ -37,34 +40,38 @@ class NodeManager:
         queue = Queue()
         init_nodes = self.nodes[sid].GetDownsideStreamNodes(cid, speaker_uid, EdgeServiceRole.kBroadcastInWorld)
         logger.debug(len(init_nodes))
-        pt.AddNode(str(sid), 0)
+        source = self.BuildNodeStr(sid, "world", 0)
+        pt.AddNode(source, 0)
         for node in init_nodes:  # node format: [sid, role]
             queue.put(node)
-            logger.debug("find edge from:{}, to:{}, level:{}".format(sid, node[0], node[1]))
+            logger.debug("find edge from:{}, to:{}, level:{}, key:{}".format(sid, node[0], node[1], node[2]))
             vis[self.HashNodeWithRole(node)] = True
-            if node[0] not in vis_sid.keys():
-                vis_sid[node[0]] = True
+            next_node = self.BuildNodeStr(node[0], node[2], 4 - node[1].value)
+            if next_node not in vis_sid.keys():
+                vis_sid[next_node] = True
                 logger.debug("add node:{}, subset:{}".format(node[0], 4 - node[1].value))
-                pt.AddNode(str(node[0]), 4 - node[1].value)
-            pt.AddEdge(str(sid), str(node[0]))
+                pt.AddNode(next_node, 4 - node[1].value)
+            pt.AddEdge(source, next_node)
 
         while not queue.empty():
-            now_node, now_role = queue.get()  # sid , role
+            now_node, now_role, key = queue.get()  # sid , role
             next_node_list = self.nodes[now_node].GetDownsideStreamNodes(cid, speaker_uid, now_role)
             # logger.debug("now:{}_{} next:{}".format(
             #     now_node, now_role, next_node_list
             # ))
+            now_node_str = self.BuildNodeStr(now_node, key, 4 - now_role.value)
             for node in next_node_list:
                 if not self.HashNodeWithRole(node) in vis.keys():
                     queue.put(node)
                     vis[self.HashNodeWithRole(node)] = True
                 # 当一个node出现过时, 不代表别人不能连向它, 相反冗余发送本来就应该有点连向它
                 logger.debug("find edge from:{}, to:{}, level:{}".format(now_node, node[0], node[1]))
-                if node[0] not in vis_sid.keys():
-                    vis_sid[node[0]] = True
+                queue_next_node = self.BuildNodeStr(node[0], node[2], 4 - node[1].value)
+                if queue_next_node not in vis_sid.keys():
+                    vis_sid[queue_next_node] = True
                     logger.debug("add node:{}, subset:{}".format(node[0], 4 - node[1].value))
-                    pt.AddNode(str(node[0]), 4 - node[1].value)
-                pt.AddEdge(str(now_node), str(node[0]))
+                    pt.AddNode(queue_next_node, 4 - node[1].value)
+                pt.AddEdge(now_node_str, queue_next_node)
 
         pt.WriteDot()
         
