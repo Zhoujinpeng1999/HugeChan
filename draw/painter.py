@@ -1,6 +1,7 @@
 
 import networkx as nx
 import matplotlib.pyplot as plt
+import os
 
 class Painter:
     def __init__(self) -> None:
@@ -20,3 +21,7 @@ class Painter:
         pos = nx.multipartite_layout(self.G)
         nx.draw_networkx(self.G, node_size = 1000, pos = pos, with_labels = True)
         plt.show()
+    
+    def WriteDot(self):
+        real_path = os.path.dirname(os.path.realpath(__file__))
+        nx.drawing.nx_pydot.write_dot(self.G, real_path + "/../dot/graph.dot")

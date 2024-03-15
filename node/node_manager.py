@@ -55,18 +55,18 @@ class NodeManager:
             #     now_node, now_role, next_node_list
             # ))
             for node in next_node_list:
-                if self.HashNodeWithRole(node) in vis.keys():
-                    continue
+                if not self.HashNodeWithRole(node) in vis.keys():
+                    queue.put(node)
+                    vis[self.HashNodeWithRole(node)] = True
+                # 当一个node出现过时, 不代表别人不能连向它, 相反冗余发送本来就应该有点连向它
                 logger.debug("find edge from:{}, to:{}, level:{}".format(now_node, node[0], node[1]))
-                queue.put(node)
-                vis[self.HashNodeWithRole(node)] = True
                 if node[0] not in vis_sid.keys():
                     vis_sid[node[0]] = True
                     logger.debug("add node:{}, subset:{}".format(node[0], 4 - node[1].value))
                     pt.AddNode(str(node[0]), 4 - node[1].value)
                 pt.AddEdge(str(now_node), str(node[0]))
 
-        pt.Show()
+        pt.WriteDot()
         
 
     
