@@ -55,14 +55,15 @@ class Organizer:
                 if len(now_zone.super_nodes) < kLevelMaxSuperNode[next_level]:
                     now_zone.super_nodes[xor_now_edge_sid] = now_edge.machine_id
                     self.AddSuperNode(now_edge, next_level)
-                # 如果满了考虑取xor值最小的
-                now_keys = list(now_zone.super_nodes.keys())
-                self.LOCAL_LOG_DEBUG("keys:{}, sid:{}, xor_sid:{}".format(now_keys, now_edge.service_id, xor_now_edge_sid))
-                if xor_now_edge_sid < now_keys[-1]:
-                    self.RemoveSuperNode(self.services[now_keys[-1]], next_level)
-                    now_zone.super_nodes.pop(now_keys[-1])
-                    now_zone.super_nodes[xor_now_edge_sid] = now_edge.machine_id
-                    self.AddSuperNode(now_edge, next_level)
+                else:
+                    # 如果满了考虑取xor值最小的
+                    now_keys = list(now_zone.super_nodes.keys())
+                    self.LOCAL_LOG_DEBUG("keys:{}, sid:{}, xor_sid:{}".format(now_keys, now_edge.service_id, xor_now_edge_sid))
+                    if xor_now_edge_sid < now_keys[0]:
+                        self.RemoveSuperNode(self.services[now_keys[0]], next_level)
+                        now_zone.super_nodes.pop(now_keys[0])
+                        now_zone.super_nodes[xor_now_edge_sid] = now_edge.machine_id 
+                        self.AddSuperNode(now_edge, next_level)
                 break
         self.LOCAL_LOG_DEBUG("add service down")
 
