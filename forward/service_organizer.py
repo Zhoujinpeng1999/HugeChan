@@ -20,14 +20,14 @@ class Organizer:
         self.super_nodes: list[dict[int, EdgeServiceWithRole]] = [{},{},{},{},{}]
     
     def LOCAL_LOG_DEBUG(self,string: str):
-        if self.self_edge.service_id == 200001:
+        if self.self_edge.service_id == 100001:
             logger.debug("[Organizer: local_cid:{cid}, _rnd:{rnd}]:{mes}".format(
                 cid=self.local_cid,
                 rnd=self._rnd,
                 mes=string
             ))
     def LOCAL_LOG_INFO(self,string: str):
-        if self.self_edge.service_id == 200001:
+        if self.self_edge.service_id == 100001:
             logger.info("[Organizer: local_cid:{cid}, _rnd:{rnd}]:{mes}".format(
                 cid=self.local_cid,
                 rnd=self._rnd,
@@ -51,7 +51,8 @@ class Organizer:
             # 判断是否now_edge和self的分叉点
             if next_zone_key != self.self_edge.GetZoneKeyWithLevel(next_level):
                 # 判断当前zone的super node是否不满
-                if len(now_zone.super_nodes) < kLevelMaxSuperNode[i]:
+                self.LOCAL_LOG_DEBUG("next_zone: {}, level:{}".format(next_zone_key, next_level))
+                if len(now_zone.super_nodes) < kLevelMaxSuperNode[next_level]:
                     now_zone.super_nodes[xor_now_edge_sid] = now_edge.machine_id
                     self.AddSuperNode(now_edge, next_level)
                 # 如果满了考虑取xor值最小的
