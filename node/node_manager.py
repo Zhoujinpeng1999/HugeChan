@@ -32,6 +32,9 @@ class NodeManager:
     def BuildNodeStr(self, sid, key, level):
         return "{}_{}_{}".format(str(sid), key, level)
 
+    # def BuildNodeStr(self, sid, key, level):
+    #     return "{}_{}".format(str(sid), key)
+
     def CreateSpeaker(self, sid: int, cid: int, speaker_uid: int):
         # 画图
         pt = Painter()
