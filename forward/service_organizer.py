@@ -1,12 +1,13 @@
 '''
-后续若需对比不同算法, 这里可以用类似abc抽象接口
+所有人使用相同的美森螺旋构造转发树
 '''
 from forward.edge_service import *
 from forward.zone import *
 from utils.random_hash import GenerateRandomKey
 from utils.log import logger
+from forward.service_organizer_base import OrganizerInterface
 
-class Organizer:
+class Organizer(OrganizerInterface):
     def __init__(self, self_edge: EdgeServiceInfo, local_cid:int):
         CheckValueTypeWithList([
             [self_edge, EdgeServiceInfo],

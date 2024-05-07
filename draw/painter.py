@@ -22,6 +22,10 @@ class Painter:
         nx.draw_networkx(self.G, node_size = 1000, pos = pos, with_labels = True)
         plt.show()
     
-    def WriteDot(self):
+    def WriteDot(self, file_name = ""):
         real_path = os.path.dirname(os.path.realpath(__file__))
-        nx.drawing.nx_pydot.write_dot(self.G, real_path + "/../dot/graph.dot")
+        if file_name == "":
+            nx.drawing.nx_pydot.write_dot(self.G, real_path + "/../dot/graph.dot")
+        else:
+            nx.drawing.nx_pydot.write_dot(self.G, real_path + "/../dot/" + file_name)
+        return
