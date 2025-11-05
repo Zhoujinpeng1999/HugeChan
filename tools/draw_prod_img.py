@@ -21,4 +21,11 @@ def Run():
                 line = line.split(",")
                 pt.AddEdge(line[0], line[1])
     # env, ts, cname, spkuid, spksid
-    pt.WriteDot("prod_1714540140000_1123307_22343256_1410479477.dot")
+    ts = "1762248240000"
+    cname = 'liveshow2'
+    spkuid = 1
+    file_name = "prod_{ts}_{cname}_{uid}.dot".format(
+        ts = ts, cname = cname, uid = spkuid
+    )
+    print("file_name:{}".format(file_name))
+    pt.WriteDot(file_name)
